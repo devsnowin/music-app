@@ -26,7 +26,7 @@ const run = async () => {
     })
   );
 
-  const user = prisma.user.upsert({
+  const user = await prisma.user.upsert({
     where: { email: "user@tem.com" },
     update: {},
     create: {
@@ -35,6 +35,23 @@ const run = async () => {
       password: await bcrypt.hash("123", 10),
     },
   });
+
+  const songs = await prisma.song.findMany({});
+  await Promise.all(
+    new Array(10).fill(1).map((_, i) => {
+      return prisma.playlist.create({
+        data: {
+          name: `Playlist #${i + 1}`,
+          user: {
+            connect: { id: user.id },
+          },
+          songs: {
+            connect: songs.map((song) => ({ id: song.id })),
+          },
+        },
+      });
+    })
+  );
 };
 
 run()
