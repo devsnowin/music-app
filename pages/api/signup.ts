@@ -30,7 +30,7 @@ export default async function handler(
 
     res.setHeader(
       "Set-Cookie",
-      cookie.serialize("MUSIC_ACCESS_TOKEN", token, {
+	  cookie.serialize("MUSIC_ACCESS_TOKEN", token, {
         httpOnly: true,
         maxAge: 8 * 60 * 60,
         path: "/",
