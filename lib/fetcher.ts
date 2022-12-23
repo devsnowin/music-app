@@ -1,10 +1,20 @@
-export default function fetcher(url: string, data: FormData) {
-  return fetch(`${window.location.origin}/api${url}`, {
-    method: data ? "POST" : "GET",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+export default async function fetcher(url: string, data: FormData) {
+    const options = {
+        method: data ? "POST" : "GET",
+        credentials: "include",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    }
+
+    // @ts-ignore
+    const res = await fetch(`${window.location.origin}/api${url}`, options)
+
+    if (res.status > 399 && res.status < 200) {
+        throw new Error()
+    }
+
+    const jsonData = await res.json()
+    return jsonData.data
 }
