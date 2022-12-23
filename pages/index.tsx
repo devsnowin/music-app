@@ -4,8 +4,10 @@ import prisma from "../lib/prisma";
 import GradientLayout from "../components/GradientLayout";
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import ArtistCard from "../components/ArtistCard";
+import { useMe } from "../lib/hooks";
 
 export default function Home({ data }) {
+  const { user, isLoading } = useMe();
   const [artists, setArtists] = useState(JSON.parse(data));
 
   useEffect(() => {
@@ -20,22 +22,31 @@ export default function Home({ data }) {
       </Head>
       <GradientLayout
         color="purple"
-        title="Snowin"
+        title={user?.name}
         subtitle="profile"
-        desc="The awesome playlist to chill and vibe"
+        desc={`${user?.playlistsCount} Public Playlists`}
         image="https://frontendmasters.github.io/fullstack-app-next-website/images/profile.png"
         roundImage={true}
+        isLoading={isLoading}
       >
         <Box padding="20px 80px">
           <Box>
             <Heading fontWeight="bold">Top Artist</Heading>
             <Text fontSize="md">Only visible to you</Text>
           </Box>
-          <Flex align="center" gap="2rem" flexWrap="wrap" marginBlock="2rem">
-            {artists &&
+          <Flex
+            align="center"
+            gap="2rem"
+            flexWrap="wrap"
+            marginBlock="4rem 2rem"
+          >
+            {artists ? (
               artists.map((artist) => (
                 <ArtistCard key={artist.id} artist={artist} />
-              ))}
+              ))
+            ) : (
+              <Text>Loading.....</Text>
+            )}
           </Flex>
         </Box>
       </GradientLayout>
