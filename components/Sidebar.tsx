@@ -11,7 +11,6 @@ import { HiMusicNote } from 'react-icons/hi';
 
 import { usePlaylist } from '../lib/hooks';
 import { signout } from '../lib/mutations';
-import { colorScheme, generateRandomColor } from '../lib/ui';
 
 const navMenu = [
 	{
@@ -118,7 +117,7 @@ const Sidebar = () => {
 						href={`/playlist/${playlist.id}`}
 						style={{ color: '#757575' }}
 					>
-						{playlist.name.toLowerCase()}
+						{playlist.name}
 					</Link>
 				))}
 			</VStack>

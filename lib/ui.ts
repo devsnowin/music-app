@@ -14,4 +14,6 @@ export const generateRandomColor = () => {
 	return colors[Math.floor(Math.random() * colors.length)];
 };
 
-export const colorScheme = generateRandomColor();
+export const capitalizeName = (name: string) => {
+	return name.replace(/\b(\w)/g, (s) => s.toUpperCase());
+};

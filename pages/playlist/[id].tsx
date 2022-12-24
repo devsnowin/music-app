@@ -8,14 +8,13 @@ import prisma from '../../lib/prisma';
 import GradientLayout from '../../components/GradientLayout';
 import SongsTable from '../../components/SongsTable';
 import { useStoreActions } from 'easy-peasy';
-import { colorScheme, generateRandomColor } from '../../lib/ui';
+import { generateRandomColor } from '../../lib/ui';
 
 const Playlist = ({ data }) => {
 	const [playlist, setPlaylist] = useState(JSON.parse(data));
 	useEffect(() => setPlaylist(JSON.parse(data)), [data]);
 
 	const bgColor = generateRandomColor();
-	// const bgColor = colorScheme;
 
 	const playSongs = useStoreActions((store: any) => store.changeActiveSongs);
 	const setActiveSong = useStoreActions((store: any) => store.changeActiveSong);
