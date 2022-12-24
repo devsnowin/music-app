@@ -15,6 +15,9 @@ const nextConfig = {
 			},
 		],
 	},
+	resolve: {
+		extensions: ['.ts', '.tsx'],
+	},
 };
 
 module.exports = nextConfig;
