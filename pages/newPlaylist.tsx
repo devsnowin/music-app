@@ -1,7 +1,7 @@
 import UnderMaintainace from '../components/UnderMaintainace';
 
-const newPlaylist = () => {
+const NewPlaylist = () => {
 	return <UnderMaintainace />;
 };
 
-export default newPlaylist;
+export default NewPlaylist;

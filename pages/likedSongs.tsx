@@ -1,7 +1,7 @@
 import UnderMaintainace from '../components/UnderMaintainace';
 
-const likedSongs = () => {
+const LikedSongs = () => {
 	return <UnderMaintainace />;
 };
 
-export default likedSongs;
+export default LikedSongs;
