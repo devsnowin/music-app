@@ -40,7 +40,7 @@ const Player = ({ songs, activeSong }) => {
 	const repeatRef = useRef(isRepeat);
 
 	useEffect(() => {
-		let timerId: number;
+		let timerId;
 
 		if (isPlaying && !isSeeking) {
 			const f = () => {
