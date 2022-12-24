@@ -8,9 +8,11 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { IoTimeOutline } from "react-icons/io5";
+import { useStoreActions } from "easy-peasy";
+
 import { formatDate, formatTime } from "../lib/formatters";
 
-const SongsTable = ({ songs }) => {
+const SongsTable = ({ songs, handlePlay }) => {
   return (
     <TableContainer paddingInline="40px">
       <Table variant="unstyled">
@@ -34,6 +36,8 @@ const SongsTable = ({ songs }) => {
                   bg: "rgba(255, 255, 255, 0.1)",
                 },
               }}
+              cursor="pointer"
+              onClick={() => handlePlay(song)}
             >
               <Td>{i + 1}</Td>
               <Td>{song.name}</Td>

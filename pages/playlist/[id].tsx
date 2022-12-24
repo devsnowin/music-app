@@ -7,6 +7,7 @@ import { validateToken } from "../../lib/auth";
 import prisma from "../../lib/prisma";
 import GradientLayout from "../../components/GradientLayout";
 import SongsTable from "../../components/SongsTable";
+import { useStoreActions } from "easy-peasy";
 
 const generateRandomColor = () => {
   const colors = [
@@ -30,6 +31,14 @@ const Playlist = ({ data }) => {
 
   const bgColor = generateRandomColor();
 
+  const playSongs = useStoreActions((store: any) => store.changeActiveSongs);
+  const setActiveSong = useStoreActions((store: any) => store.changeActiveSong);
+
+  const handlePlay = (activeSong?) => {
+    setActiveSong(activeSong || playlist?.songs[0]);
+    playSongs(playlist?.songs);
+  };
+
   return (
     <GradientLayout
       color={bgColor}
@@ -47,9 +56,10 @@ const Playlist = ({ data }) => {
           variant="link"
           isRound
           aria-label="play button"
+          onClick={() => handlePlay()}
         />
       </Box>
-      <SongsTable songs={playlist?.songs} />
+      <SongsTable songs={playlist?.songs} handlePlay={handlePlay} />
     </GradientLayout>
   );
 };
