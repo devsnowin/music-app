@@ -21,6 +21,7 @@
     "@types/react-dom": "18.0.9",
     "bcrypt": "^5.1.0",
     "cookie": "^0.5.0",
+    "easy-peasy": "^5.2.0",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
     "format-duration": "^3.0.1",
@@ -29,6 +30,7 @@
     "next": "13.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-howler": "^5.2.0",
     "react-icons": "^4.7.1",
     "reset-css": "^5.0.1",
     "swr": "^2.0.0",
@@ -38,6 +40,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/cookie": "^0.5.1",
     "@types/jsonwebtoken": "^8.5.9",
+    "@types/react-howler": "^5.2.0",
     "prisma": "^4.8.0",
     "ts-node": "^10.9.1"
   },

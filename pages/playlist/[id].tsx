@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { JwtPayload } from "jsonwebtoken";
 import { Box, IconButton, Text } from "@chakra-ui/react";
-import { BsPlayFill } from "react-icons/bs";
+import { MdPlayCircle } from "react-icons/md";
 
 import { validateToken } from "../../lib/auth";
 import prisma from "../../lib/prisma";
@@ -42,11 +42,11 @@ const Playlist = ({ data }) => {
     >
       <Box bg="transparent" margin="0 40px 40px 40px">
         <IconButton
-          icon={<BsPlayFill color="#181818" fontSize="38px" />}
-          boxSize="58px"
-          aria-label="play button"
-          colorScheme={bgColor}
+          icon={<MdPlayCircle fontSize="48px" />}
+          color={"white"}
+          variant="link"
           isRound
+          aria-label="play button"
         />
       </Box>
       <SongsTable songs={playlist?.songs} />

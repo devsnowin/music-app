@@ -1,15 +1,16 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import Image from "next/image";
 import { VStack, HStack, Heading, Divider, Icon, Text } from "@chakra-ui/react";
-import { HiMusicNote } from "react-icons/hi";
 import { AiFillHome } from "react-icons/ai";
 import { AiOutlineSearch } from "react-icons/ai";
+import { AiOutlineFolderAdd } from "react-icons/ai";
+import { AiOutlineLogout } from "react-icons/ai";
 import { RiPlayListFill } from "react-icons/ri";
 import { FcLike } from "react-icons/fc";
-import { AiOutlineFolderAdd } from "react-icons/ai";
+import { HiMusicNote } from "react-icons/hi";
 
 import { usePlaylist } from "../lib/hooks";
+import { signout } from "../lib/mutations";
 
 const navMenu = [
   {
@@ -30,13 +31,17 @@ const navMenu = [
 ];
 
 const Sidebar = () => {
-  const { pathname } = useRouter();
+  const router = useRouter();
   const { playlists } = usePlaylist();
+
+  const handleSignout = async () => {
+    await signout();
+    router.push("/signin");
+  };
 
   return (
     <VStack padding="2rem 1rem 0" alignItems="flex-start" h="full">
       <HStack paddingBlock="1rem">
-        {/* <Image src="/logo.png" alt="app logo" width={42} height={42} /> */}
         <HiMusicNote fontSize={38} />
         <Heading as={Link} href="/" size="md">
           Music App
@@ -58,7 +63,7 @@ const Sidebar = () => {
             w="full"
             alignItems="center"
             gap="0.4rem"
-            color={`${pathname === menu.route && "#fff"}`}
+            color={`${router.pathname === menu.route && "#fff"}`}
             transition="all 0.3s ease"
             _hover={{ color: "#fff" }}
           >
@@ -77,7 +82,7 @@ const Sidebar = () => {
         <HStack
           alignItems="center"
           gap="0.4rem"
-          color={`${pathname === "/newPlaylist" && "#fff"}`}
+          color={`${router.pathname === "/newPlaylist" && "#fff"}`}
           transition="all 0.3s ease"
           _hover={{ color: "#fff" }}
         >
@@ -89,7 +94,7 @@ const Sidebar = () => {
         <HStack
           alignItems="center"
           gap="0.5rem"
-          color={`${pathname === "/likedSongs" && "#fff"}`}
+          color={`${router.pathname === "/likedSongs" && "#fff"}`}
           transition="all 0.3s ease"
           _hover={{ color: "#fff" }}
         >
@@ -116,10 +121,27 @@ const Sidebar = () => {
           </Link>
         ))}
       </VStack>
-
-      <Text paddingBlock="1rem" color="gray.800">
-        2022 © Snowin
-      </Text>
+      <VStack pos="absolute" bottom="4" gap="0.5rem">
+        <HStack
+          alignItems="center"
+          gap="0.5rem"
+          color={`${router.pathname === "/likedSongs" && "#fff"}`}
+          transition="all 0.3s ease"
+          _hover={{ color: "#fff" }}
+        >
+          <AiOutlineLogout size={26} />
+          <Heading
+            as={Link}
+            onClick={handleSignout}
+            bg="transparent"
+            href="/"
+            size="xs"
+          >
+            Sign Out
+          </Heading>
+        </HStack>
+        <Text color="gray.800">2022 © Snowin</Text>
+      </VStack>
     </VStack>
   );
 };
