@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
+import UnderMaintainace from '../components/UnderMaintainace';
 
 const search = () => {
-  return <div>search</div>;
+	return <UnderMaintainace />;
 };
 
 export default search;

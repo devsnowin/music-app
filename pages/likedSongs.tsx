@@ -1,7 +1,7 @@
-import React from "react";
+import UnderMaintainace from '../components/UnderMaintainace';
 
 const likedSongs = () => {
-  return <div>likedSongs</div>;
+	return <UnderMaintainace />;
 };
 
 export default likedSongs;

@@ -1,5 +1,7 @@
+import UnderMaintainace from '../components/UnderMaintainace';
+
 const newPlaylist = () => {
-  return <div>newPlaylist</div>;
+	return <UnderMaintainace />;
 };
 
 export default newPlaylist;
