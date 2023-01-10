@@ -11,7 +11,7 @@ To be completely honest, this course was amazing. This course taught me a lot of
 - How the serverless function works
 - How to create an Edge function
 - How to connect the database with NextJS
-- Learnt about the new ORM Prisma and more ...
+- Learnt about the new ORM Prisma and more ....
 
 ### Check Out
 
